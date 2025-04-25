@@ -301,10 +301,11 @@
         \resumeItemListEnd
 }
 
-\newcommand{\shortdegree}[4]{
+\newcommand{\shortdegree}[5]{
 \vspace{0.5mm}
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} -- #2: #3 & \textit{\footnotesize{#4}}
+        \textbf{#1} -- #2: #3 & \textit{\footnotesize{#4}} \\
+        \ifx&#5&\vspace{-0.45cm}\else \textit{\footnotesize{Key Modules: #5}}\fi
     \end{tabular*}
 }
 
