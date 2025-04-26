@@ -206,15 +206,18 @@
     \begin{center}
         \small{
         \ifx\@linkedin\empty\else
-            \socialicon{\textcolor{accentcolor}{\faLinkedin}} \href{https://www.\@linkedin}{\linkstyle{\@linkedin}}
+            %\socialicon{\textcolor{accentcolor}{\faLinkedin}}
+            \href{https://www.\@linkedin}{\linkstyle{\@linkedin}}
         \fi
         \ifx\@linkedin\empty\else \ifx\@github\empty\else \enspace | \fi \fi
         \ifx\@github\empty\else
-            \socialicon{\textcolor{accentcolor}{\faGithub}} \href{https://www.\@github}{\linkstyle{\@github}}
+            %\socialicon{\textcolor{accentcolor}{\faGithub}}
+            \href{https://www.\@github}{\linkstyle{\@github}}
         \fi
         \ifx\@github\empty\else \ifx\@leetcode\empty\else \enspace | \fi \fi
         \ifx\@leetcode\empty\else
-            \socialicon{\textcolor{accentcolor}{\faCode}} \href{https://www.\@leetcode}{\linkstyle{\@leetcode}}
+            %\socialicon{\textcolor{accentcolor}{\faCode}}
+            \href{https://www.\@leetcode}{\linkstyle{\@leetcode}}
         \fi
         }
     \end{center}
@@ -268,7 +271,8 @@
 
 \newcommand{\job}[7]{
     \resumeSubheading
-        {{#1 [\socialiconlink{globe}{#2}{Company Website}]}}{#3}
+        %{{#1 [\socialiconlink{globe}{#2}{Company Website}]}}{#3}
+        {\href{#2}{\linkstyle{#1}}}{#3}
         {#4}{#5 -- #6}
         \vspace{1mm}
         \ifx&#7&
@@ -323,10 +327,11 @@
 
 \newcommand{\project}[6]{
     \resumeProject
-        {{#1 \ifx&#2&\ifx&#5&\else[\socialiconlink{github}{#5}{GitHub Repository}] \fi\fi}}
-        {\ifx&#2&\vspace{-0.35cm}\else Tools: #2\fi}
-        {#3 -- #4}
-        {\ifx&#2&\else\ifx&#5& {}[\socialiconlink{github}{#5}{GitHub Repository}] \fi\fi}
+        %{{#1 \ifx&#2&\ifx&#5&\else[\socialiconlink{github}{#5}{GitHub Repository}] \fi\fi}}
+        {\href{#5}{\linkstyle{#1}}}
+        {\ifx&#2&\vspace{-0.35cm}\else#2\fi}
+        {#3 -- #4}{}
+        %{\ifx&#2&\else\ifx&#5&\else {}[\socialiconlink{github}{#5}{GitHub Repository}] \fi\fi}
         \vspace{0.5mm}
         \ifx&#6&
         \else
@@ -370,11 +375,12 @@
     \end{tabular*}
 }
 
-\newcommand{\certificate}[5]{
+\newcommand{\certificate}[6]{
     \vspace{0.5mm}
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
         \textbf{#1} -- {{\href{#3}{\linkstyle{#2}}}} & \textit{\footnotesize{\ifx&#5&#4\else #4 -- #5\fi}}
     \end{tabular*}
+    \ifx&#6&\else \textit{\footnotesize{Content: #6}}\fi
 }
 
 % Awards
