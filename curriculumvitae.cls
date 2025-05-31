@@ -47,8 +47,8 @@
 \newcommand{\country}[1]{\xdef\@country{#1}}
 
 % Colour Definitions
+\definecolor{basecolor}{RGB}{0, 0, 0}
 \definecolor{accentcolor}{RGB}{72, 0, 128}
-\definecolor{linkcolor}{RGB}{0, 0, 0}
 
 % Page layout
 \setlength{\multicolsep}{0pt} 
@@ -63,9 +63,9 @@
 % Hyperlink setup (moved after fancyhdr to address warning)
 \hypersetup{
     colorlinks=true,
-    linkcolor=linkcolor,
-    filecolor=linkcolor,
-    urlcolor=linkcolor,
+    linkcolor=basecolor,
+    filecolor=basecolor,
+    urlcolor=basecolor,
 }
 
 % Custom box settings
@@ -100,7 +100,7 @@
 % Custom commands
 
 \newcommand{\keywordstyle}[1]{\textbf{\textcolor{accentcolor}{#1}}}
-\newcommand{\linkstyle}[1]{\textcolor{linkcolor}{#1}}
+\newcommand{\linkstyle}[1]{\textcolor{accentcolor}{\textmd{\underline{#1}}}}
 
 \newcommand{\resumeItem}[2]{
   {
@@ -272,7 +272,7 @@
 \newcommand{\job}[7]{
     \resumeSubheading
         %{{#1 [\socialiconlink{globe}{#2}{Company Website}]}}{#3}
-        {\href{#2}{\linkstyle{#1}}}{#3}
+        {\href{#2}{#1}}{#3}
         {#4}{#5 -- #6}
         \vspace{1mm}
         \ifx&#7&
@@ -325,18 +325,18 @@
     \vspace{-2mm}
 }
 
-\newcommand{\project}[6]{
+\newcommand{\project}[7]{
     \resumeProject
         %{{#1 \ifx&#2&\ifx&#5&\else[\socialiconlink{github}{#5}{GitHub Repository}] \fi\fi}}
-        {\href{#5}{\linkstyle{#1}}}
+        {{#1\ifx&#5&\else{ [\href{#5}{\linkstyle{GitHub}}]}\fi\ifx&#6&\else{ [\href{#6}{\linkstyle{Live Demo}}]}\fi}}
         {\ifx&#2&\vspace{-0.35cm}\else#2\fi}
         {#3 -- #4}{}
         %{\ifx&#2&\else\ifx&#5&\else {}[\socialiconlink{github}{#5}{GitHub Repository}] \fi\fi}
         \vspace{0.5mm}
-        \ifx&#6&
+        \ifx&#7&
         \else
             \resumeItemListStart
-                #6
+                #7
             \resumeItemListEnd
         \fi
     \vspace{1mm}
@@ -371,14 +371,14 @@
 \newcommand{\course}[5]{
     \vspace{0.5mm}
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} -- {{\href{#3}{\linkstyle{#2}}}} & \textit{\footnotesize{\ifx&#5&#4\else #4 -- #5\fi}}
+        \textbf{#1} -- {{\href{#3}{#2}}} & \textit{\footnotesize{\ifx&#5&#4\else #4 -- #5\fi}}
     \end{tabular*}
 }
 
 \newcommand{\certificate}[6]{
     \vspace{0.5mm}
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} -- {{\href{#3}{\linkstyle{#2}}}} & \textit{\footnotesize{\ifx&#5&#4\else #4 -- #5\fi}}
+        \textbf{#1} -- {{\href{#3}{#2}}} & \textit{\footnotesize{\ifx&#5&#4\else #4 -- #5\fi}}
     \end{tabular*}
     \ifx&#6&\else \textit{\footnotesize{Content: #6}}\fi
 }
@@ -398,7 +398,7 @@
 \newcommand{\award}[5]{
     \vspace{0.5mm}
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} -- {{\href{#3}{\linkstyle{#2}}}} & \textit{\footnotesize{\ifx&#5&#4\else #4 -- #5\fi}}
+        \textbf{#1} -- {{\href{#3}{#2}}} & \textit{\footnotesize{\ifx&#5&#4\else #4 -- #5\fi}}
     \end{tabular*}
 }
 
